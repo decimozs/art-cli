@@ -3,13 +3,15 @@ package app.helpers;
 import app.base.Structure;
 import app.constants.Constants;
 import app.ui.UserInterface;
+import app.utils.RuntimeTester;
 import javals.searching.BinarySearch;
 import javals.searching.LinearSearch;
 
 import java.util.Scanner;
 
 public class ComparisonHelpers {
-    private Structure struct = new Structure();
+    private final RuntimeTester run = new RuntimeTester();
+    private final Structure struct = new Structure();
     private final LinearSearch ls = new LinearSearch();
     private final BinarySearch bs = new BinarySearch();
     private final Scanner sc = new Scanner(System.in);
@@ -50,9 +52,16 @@ public class ComparisonHelpers {
                     System.out.println("Enter the target element: ");
                     int target = sc.nextInt();
                     System.out.println("Algorithm 1: Linear Search");
-                    ls.linearSearch(struct.sortedStruct, target);
+                    long algo1 = ls.linearSearch(struct.sortedStruct, target);
                     System.out.println("Algorithm 2: Binary Search");
-                    bs.binarySearch(struct.sortedStruct, target);
+                    long algo2 = bs.binarySearch(struct.sortedStruct, target);
+
+                    if (algo1 > algo2) {
+                        System.out.println("Algorithm 2 has a faster way to found the target element.");
+                    } else {
+                        System.out.println("Algorithm 1 has a faster way to found the target element.");
+                    }
+
                 } else {
                     System.out.println("Algorithm 1: Binary Search");
                     System.out.println("Algorithm 2: Linear Search");

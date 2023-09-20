@@ -3,9 +3,10 @@ package javals.searching;
 import app.utils.RuntimeTester;
 /** LinearSearch */
 public class LinearSearch {
+    public long elapsedTime;
     RuntimeTester run = new RuntimeTester();
 
-    public void linearSearch(int[] arr, int target) {
+    public long linearSearch(int[] arr, int target) {
         Runnable search =
                 () -> {
                     int length = arr.length;
@@ -24,5 +25,7 @@ public class LinearSearch {
                 };
 
         run.test(search, "Linear Search");
+
+        return run.algorithmTakes;
     }
 }

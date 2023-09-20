@@ -6,7 +6,7 @@ import app.utils.RuntimeTester;
 public class BinarySearch {
     RuntimeTester run = new RuntimeTester();
 
-    public void binarySearch(int[] arr, int target) {
+    public long binarySearch(int[] arr, int target) {
         Runnable search =
                 () -> {
                     int length = arr.length;
@@ -32,5 +32,7 @@ public class BinarySearch {
                     }
                 };
         run.test(search, "Binary Search");
+
+        return run.algorithmTakes;
     }
 }
