@@ -4,8 +4,11 @@ import app.utils.RuntimeTester;
 /** LinearSearch */
 public class LinearSearch {
     public long elapsedTime;
-    RuntimeTester run = new RuntimeTester();
+    RuntimeTester run;
 
+    public LinearSearch() {
+        run = new RuntimeTester();
+    }
     public long linearSearch(int[] arr, int target) {
         System.out.println("Linear Search");
         Runnable search =

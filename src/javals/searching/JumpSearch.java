@@ -3,7 +3,11 @@ package javals.searching;
 import app.utils.RuntimeTester;
 
 public class JumpSearch {
-    RuntimeTester run = new RuntimeTester();
+    RuntimeTester run;
+
+    public JumpSearch() {
+        run = new RuntimeTester();
+    }
 
     public long jumpSearch(int[] arr, int target) {
         System.out.println("Jump Search");

@@ -2,4 +2,4 @@
 echo "Test script.bat"
 javac Main.java
 java Main.java
-pause
+
