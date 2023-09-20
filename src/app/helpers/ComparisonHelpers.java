@@ -159,7 +159,7 @@ public class ComparisonHelpers {
             case 1 -> ls.linearSearch(struct.sortedStruct, target);
             case 2 -> bs.binarySearch(struct.sortedStruct, target);
             case 3 -> js.jumpSearch(struct.sortedStruct, target);
-            default -> throw new IllegalStateException("Unexpected value: " + firstChoice);
+            default -> throw new IllegalStateException("Unexpected value: " + secondChoice);
         };
     }
 }
