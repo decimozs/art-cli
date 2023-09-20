@@ -44,6 +44,7 @@ public class ComparisonHelpers {
         System.out.println("[Searching Algorithm]");
         ui.menu(cs.getSearchingAlgorithmOptions());
         System.out.println("Compare the searching algorithm you want!");
+
         firstChoice = input.getInput("First algorithm: ");
 
         printSearchingAlgorithmChoice(firstChoice);
@@ -90,14 +91,14 @@ public class ComparisonHelpers {
 
     private void printSearchingAlgorithmChoice(int choice){
         String algorithmName = "";
-        if (choice == 1) {
-            algorithmName = "Linear Search";
-        } else if (choice == 2) {
-            algorithmName = "Binary Search";
-        } else {
-            algorithmName = "Jump Search";
-        }
-        System.out.println("Algorithm: " + algorithmName);
+        algorithmName = switch (choice) {
+            case 1 -> "Linear Search";
+            case 2 -> "Binary Search";
+            case 3 -> "Jump Search";
+            case 4 -> "Interpolation Search";
+            default -> "Exponential Search";
+        };
+        System.out.println(algorithmName);
     }
 
     private void printSortingAlgorithmChoice(int choice){
@@ -116,29 +117,47 @@ public class ComparisonHelpers {
         int target;
         long firstAlgorithm;
         long secondAlgorithm;
-        
+        String firstAlgorithmName = "";
+        String secondAlgorithmName = "";
+
+        firstAlgorithmName = switch (firstChoice) {
+            case 1 -> "Linear Search";
+            case 2 -> "Binary Search";
+            case 3 -> "Jump Search";
+            case 4 -> "Interpolation Search";
+            default -> "Exponential Search";
+        };
+
+        // Assign algorithm names based on the second choice
+        secondAlgorithmName = switch (secondChoice) {
+            case 1 -> "Linear Search";
+            case 2 -> "Binary Search";
+            case 3 -> "Jump Search";
+            case 4 -> "Interpolation Search";
+            default -> "Exponential Search";
+        };
+
         if (firstChoice == 1 && secondChoice == 2) {
-            System.out.println("Algorithm 1: Linear Search");
-            System.out.println("Algorithm 2: Binary Search");
+            System.out.println("Algorithm 1: " + firstAlgorithmName);
+            System.out.println("Algorithm 2: " + secondAlgorithmName);
             System.out.print("Structure: ");
             struct.searchingStructure();
             target = input.getInput("Enter the target element: ");
-            System.out.println("Algorithm 1: Linear Search");
+            System.out.println("Algorithm 1: " + firstAlgorithmName);
             firstAlgorithm = ls.linearSearch(struct.sortedStruct, target);
-            System.out.println("Algorithm 2: Binary Search");
+            System.out.println("Algorithm 2: " + secondAlgorithmName);
             secondAlgorithm = bs.binarySearch(struct.sortedStruct, target);
 
             comparisonResult(firstAlgorithm, secondAlgorithm);
         } else {
-            System.out.println("Algorithm 1: Binary Search");
-            System.out.println("Algorithm 2: Linear Search");
+            System.out.println("Algorithm 1: " + firstAlgorithmName);
+            System.out.println("Algorithm 2: " + secondAlgorithmName);
             System.out.print("Structure: ");
             struct.searchingStructure();
-            System.out.println("Enter the target element: ");
             target = input.getInput("Enter the target element: ");
-            System.out.println("Algorithm 1: Binary Search");
+            System.out.println("Algorithm 1: " + firstAlgorithmName);
             firstAlgorithm = bs.binarySearch(struct.sortedStruct, target);
-            System.out.println("Algorithm 2: Linear Search");
+            System.out.println("Algorithm 2: " + secondAlgorithmName);
             secondAlgorithm = ls.linearSearch(struct.sortedStruct, target);
 
             comparisonResult(firstAlgorithm, secondAlgorithm);
