@@ -3,54 +3,60 @@ package app;
 import app.constants.Constants;
 import app.helpers.AlgorithmHelpers;
 import app.helpers.ComparisonHelpers;
-import javals.searching.*;
+import app.helpers.InputHelpers;
 import app.ui.*;
 import java.util.Scanner;
 
 /** Home */
 public class Home {
-    private final LinearSearch ls = new LinearSearch();
-    private final BinarySearch bs = new BinarySearch();
-    private final UserInterface ui = new UserInterface();
-    private final Constants cs = new Constants();
-    private final AlgorithmHelpers helpers = new AlgorithmHelpers();
-    private final ComparisonHelpers comparing = new ComparisonHelpers();
-    private final Scanner sc = new Scanner(System.in);
+    private final UserInterface ui;
+    private final Constants cs;
+    private final AlgorithmHelpers helpers;
+    private final ComparisonHelpers comparing;
+    private final Scanner sc;
+    private final InputHelpers input;
 
-    private final int[] arr = {1, 2, 4, 5, 6, 7, 8, 9, 10};
+    public Home () {
+        ui = new UserInterface();
+        cs = new Constants();
+        helpers = new AlgorithmHelpers();
+        comparing = new ComparisonHelpers();
+        sc = new Scanner(System.in);
+        input = new InputHelpers();
+    }
 
     public void start() {
         String response;
 
         do {
             ui.title();
-            ui.menu(cs.getMenuOptions(), "Test or Compare? ");
-            int choice = sc.nextInt();
+            ui.menu(cs.getMenuOptions());
+            int choice = input.getInput("Test or Compare? ");
 
             switch (choice) {
                 case 1 -> {
-                    ui.menu(cs.getTestOptions(), "Searching or Sorting? ");
-                    int algorithmChoice = sc.nextInt();
+                    ui.menu(cs.getTestOptions());
+                    int algorithmChoice = input.getInput("Searching or Sorting? ");
                     if (algorithmChoice == 1) {
-                        ui.menu(cs.getSearchingAlgorithmOptions(), "Pick a type of algorithm: ");
-                        int searchChoice = sc.nextInt();
+                        ui.menu(cs.getSearchingAlgorithmOptions());
+                        int searchChoice = input.getInput("Pick a type of algorithm: ");
                         helpers.performSearching(searchChoice);
                     } else {
-                        ui.menu(cs.getSortingAlgorithmOptions(), "Pick a type of algorithm: ");
-                        int sortingChoice = sc.nextInt();
+                        ui.menu(cs.getSortingAlgorithmOptions());
+                        int sortingChoice = input.getInput("Pick a type of algorithm: ");
                         helpers.performSorting(sortingChoice);
                     }
                 }
                 case 2 -> {
-                    ui.menu(cs.getComparisonOptions(), "What type of algorithm you want to compare? ");
+                    ui.menu(cs.getComparisonOptions());
                     comparing.performComparison();
                 }
                 default -> System.out.println("Invalid choice");
             }
 
             do {
-                System.out.println("Do you want to try again [Y/N]");
-                response = sc.next();
+                System.out.println();
+                response = input.getStringInput("Do you want to try again [Y/N]");
             } while (!response.equalsIgnoreCase("n") && !response.equalsIgnoreCase("y"));
 
         } while (!response.equalsIgnoreCase("n"));

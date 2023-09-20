@@ -33,6 +33,9 @@ public class Constants {
         List<String> options = new ArrayList<>();
         options.add("Linear Search");
         options.add("Binary Search");
+        options.add("Jump Search");
+        options.add("Interpolation Search");
+        options.add("Exponential Search");
         options.add("Exit");
         return options;
     }

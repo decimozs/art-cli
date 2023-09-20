@@ -11,11 +11,19 @@ import javals.sorting.BubbleSort;
 /** AlgorithmHelpers */
 public class AlgorithmHelpers {
 
-    private final LinearSearch ls = new LinearSearch();
-    private final BinarySearch bs = new BinarySearch();
-    private final BubbleSort bsort = new BubbleSort();
-    private final Scanner sc = new Scanner(System.in);
-    private final Structure struct = new Structure();
+    private final LinearSearch ls;
+    private final BinarySearch bs;
+    private final BubbleSort bsort;
+    private final Scanner sc;
+    private final Structure struct;
+
+    public AlgorithmHelpers(){
+        ls = new LinearSearch();
+        bs = new BinarySearch();
+        bsort = new BubbleSort();
+        sc = new Scanner(System.in);
+        struct = new Structure();
+    }
 
     public void performSearching(int choice) {
         System.out.println((choice == 1) ? "Linear Search" : "BinarySearch");

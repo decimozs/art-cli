@@ -5,7 +5,6 @@ import java.util.Random;
 
 /** Structure */
 public class Structure {
-
     public int[] sortedStruct = new int[100];
     public int[] unsortedStruct = new int[100];
 
@@ -47,6 +46,5 @@ public class Structure {
         System.out.println(
                 Arrays.toString(unsortedStruct)
         );
-
     }
 }
