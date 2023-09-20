@@ -23,6 +23,6 @@ public class LinearSearch {
                     }
                 };
 
-        run.test(search);
+        run.test(search, "Linear Search");
     }
 }

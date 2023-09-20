@@ -31,6 +31,6 @@ public class BinarySearch {
                         System.out.println("Target cannot found!");
                     }
                 };
-        run.test(search);
+        run.test(search, "Binary Search");
     }
 }

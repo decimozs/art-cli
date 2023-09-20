@@ -21,7 +21,7 @@ public class AlgorithmHelpers {
         System.out.println((choice == 1) ? "Linear Search" : "BinarySearch");
         System.out.print("Structure: ");
         struct.searchingStructure();
-        System.out.print("Enter the data you want to find inside of the structure: ");
+        System.out.print("Enter the target element: ");
         int target = sc.nextInt();
 
         if (choice == 1) {
@@ -36,12 +36,12 @@ public class AlgorithmHelpers {
         System.out.print("Unsorted Array: ");
         struct.unsortedStructure();
         if (choice == 1) {
-            System.out.print("Sorted Array: ");
             bsort.bubblesort(struct.unsortedStruct);
+            System.out.print("Sorted Array: ");
             struct.sortedStructure();
         } else {
-            System.out.println("Sorted Array: ");
             bsort.bubblesort(struct.unsortedStruct);
+            System.out.println("Sorted Array: ");
             struct.sortedStructure();
         }
     }

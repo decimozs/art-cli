@@ -31,6 +31,6 @@ public class BubbleSort {
 
                     System.out.println("Swapping counts: " + count);
                 };
-        run.test(sort);
+        run.test(sort, "Bubble Sort");
     }
 }

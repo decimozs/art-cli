@@ -2,79 +2,50 @@ package app;
 
 import app.constants.Constants;
 import app.helpers.AlgorithmHelpers;
+import app.helpers.ComparisonHelpers;
 import javals.searching.*;
-import javals.sorting.*;
 import app.ui.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /** Home */
 public class Home {
     private final LinearSearch ls = new LinearSearch();
     private final BinarySearch bs = new BinarySearch();
-    private final BubbleSort bsort = new BubbleSort();
     private final UserInterface ui = new UserInterface();
     private final Constants cs = new Constants();
-    private final AlgorithmHelpers ahlp = new AlgorithmHelpers();
+    private final AlgorithmHelpers helpers = new AlgorithmHelpers();
+    private final ComparisonHelpers comparing = new ComparisonHelpers();
     private final Scanner sc = new Scanner(System.in);
 
     private final int[] arr = {1, 2, 4, 5, 6, 7, 8, 9, 10};
-    private final int[] uarr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
     public void start() {
         String response;
 
         do {
             ui.title();
-            ui.menu(cs.getMenuOptions());
+            ui.menu(cs.getMenuOptions(), "Test or Compare? ");
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1:
-                    ui.menu(cs.getTestOptions());
+                case 1 -> {
+                    ui.menu(cs.getTestOptions(), "Searching or Sorting? ");
                     int algorithmChoice = sc.nextInt();
-
                     if (algorithmChoice == 1) {
-                        ui.menu(cs.getSearchingAlgorithmOptions());
+                        ui.menu(cs.getSearchingAlgorithmOptions(), "Pick a type of algorithm: ");
                         int searchChoice = sc.nextInt();
-                        ahlp.performSearching(searchChoice);
+                        helpers.performSearching(searchChoice);
                     } else {
-                        ui.menu(cs.getSortingAlgorithmOptions());
+                        ui.menu(cs.getSortingAlgorithmOptions(), "Pick a type of algorithm: ");
                         int sortingChoice = sc.nextInt();
-                        ahlp.performSorting(choice);
-
-
+                        helpers.performSorting(sortingChoice);
                     }
-                    break;
-
-                case 2:
-                    System.out.println("Compare Algorithm");
-                    System.out.println("[1] Linear Search");
-                    System.out.println("[2] Binary Search");
-                    System.out.print("Pick the first algorithm: ");
-                    int firstChoice = sc.nextInt();
-
-                    System.out.println((firstChoice == 1) ? "Linear Search" : "Binary Search");
-
-                    System.out.print("Pick the second algorithm: ");
-                    int secondChoice = sc.nextInt();
-
-                    System.out.println((secondChoice == 1) ? "Linear Search" : "Binary Search");
-
-                    if (firstChoice == 1 && secondChoice == 2) {
-                        System.out.println("Linear Search VS Binary Search");
-                        System.out.print("Array: ");
-                        System.out.println(Arrays.toString(arr));
-                        System.out.println("Enter the data you want to find: ");
-                        int target = sc.nextInt();
-                        ls.linearSearch(arr, target);
-                        bs.binarySearch(arr, target);
-                    }
-                    break;
-
-                default:
-                    System.out.println("Invalid choice");
-                    break;
+                }
+                case 2 -> {
+                    ui.menu(cs.getComparisonOptions(), "What type of algorithm you want to compare? ");
+                    comparing.performComparison();
+                }
+                default -> System.out.println("Invalid choice");
             }
 
             do {

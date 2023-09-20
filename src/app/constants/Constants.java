@@ -22,6 +22,13 @@ public class Constants {
         return options;
     }
 
+    public List<String> getComparisonOptions() {
+        List<String> options = new ArrayList<>();
+        options.add("Searching Algorithm");
+        options.add("Sorting Algorithm");
+        return options;
+    }
+
     public List<String> getSearchingAlgorithmOptions() {
         List<String> options = new ArrayList<>();
         options.add("Linear Search");
