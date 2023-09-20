@@ -70,16 +70,22 @@ public class ComparisonHelpers {
                     System.out.println("Enter the target element: ");
                     int target = sc.nextInt();
                     System.out.println("Algorithm 1: Binary Search");
-                    bs.binarySearch(struct.sortedStruct, target);
+                    long algo1 = bs.binarySearch(struct.sortedStruct, target);
                     System.out.println("Algorithm 2: Linear Search");
-                    ls.linearSearch(struct.sortedStruct, target);
+                    long algo2 = ls.linearSearch(struct.sortedStruct, target);
+
+                    if (algo1 > algo2) {
+                        System.out.println("Algorithm 2 has a faster way to found the target element.");
+                    } else {
+                        System.out.println("Algorithm 1 has a faster way to found the target element.");
+                    }
                 }
             }
 
             case 2 -> {
                 System.out.println("[Sorting Algorithm]");
                 ui.menu(cs.getSortingAlgorithmOptions(), "Compare the sorting algorithm you want!");
-                System.out.println("First algorithhm: ");
+                System.out.println("First algorithm: ");
                 firstChoice = sc.nextInt();
                 System.out.println("Second algorithm: ");
                 secondChoice = sc.nextInt();
