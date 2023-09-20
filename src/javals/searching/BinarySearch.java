@@ -7,6 +7,7 @@ public class BinarySearch {
     RuntimeTester run = new RuntimeTester();
 
     public long binarySearch(int[] arr, int target) {
+        System.out.println("Binary Search");
         Runnable search =
                 () -> {
                     int length = arr.length;

@@ -7,6 +7,7 @@ public class LinearSearch {
     RuntimeTester run = new RuntimeTester();
 
     public long linearSearch(int[] arr, int target) {
+        System.out.println("Linear Search");
         Runnable search =
                 () -> {
                     int length = arr.length;

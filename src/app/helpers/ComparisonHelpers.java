@@ -4,6 +4,7 @@ import app.base.Structure;
 import app.constants.Constants;
 import app.ui.UserInterface;
 import javals.searching.BinarySearch;
+import javals.searching.JumpSearch;
 import javals.searching.LinearSearch;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class ComparisonHelpers {
     private final Structure struct;
     private final LinearSearch ls;
     private final BinarySearch bs;
+    private final JumpSearch js;
     private final Scanner sc;
     private final UserInterface ui;
     private final Constants cs;
@@ -26,6 +28,7 @@ public class ComparisonHelpers {
         sc = new Scanner(System.in);
         ui = new UserInterface();
         cs = new Constants();
+        js = new JumpSearch();
     }
 
     public void performComparison() {
@@ -114,7 +117,7 @@ public class ComparisonHelpers {
     }
 
     private void comparisonOverview (int firstChoice, int secondChoice) {
-        int target;
+        int target = 0;
         long firstAlgorithm;
         long secondAlgorithm;
         String firstAlgorithmName = "";
@@ -128,7 +131,6 @@ public class ComparisonHelpers {
             default -> "Exponential Search";
         };
 
-        // Assign algorithm names based on the second choice
         secondAlgorithmName = switch (secondChoice) {
             case 1 -> "Linear Search";
             case 2 -> "Binary Search";
@@ -137,30 +139,27 @@ public class ComparisonHelpers {
             default -> "Exponential Search";
         };
 
-        if (firstChoice == 1 && secondChoice == 2) {
-            System.out.println("Algorithm 1: " + firstAlgorithmName);
-            System.out.println("Algorithm 2: " + secondAlgorithmName);
-            System.out.print("Structure: ");
-            struct.searchingStructure();
-            target = input.getInput("Enter the target element: ");
-            System.out.println("Algorithm 1: " + firstAlgorithmName);
-            firstAlgorithm = ls.linearSearch(struct.sortedStruct, target);
-            System.out.println("Algorithm 2: " + secondAlgorithmName);
-            secondAlgorithm = bs.binarySearch(struct.sortedStruct, target);
+        System.out.println("Algorithm 1: " + firstAlgorithmName);
+        System.out.println("Algorithm 2: " + secondAlgorithmName);
+        System.out.print("Structure: ");
+        struct.searchingStructure();
 
-            comparisonResult(firstAlgorithm, secondAlgorithm);
-        } else {
-            System.out.println("Algorithm 1: " + firstAlgorithmName);
-            System.out.println("Algorithm 2: " + secondAlgorithmName);
-            System.out.print("Structure: ");
-            struct.searchingStructure();
-            target = input.getInput("Enter the target element: ");
-            System.out.println("Algorithm 1: " + firstAlgorithmName);
-            firstAlgorithm = bs.binarySearch(struct.sortedStruct, target);
-            System.out.println("Algorithm 2: " + secondAlgorithmName);
-            secondAlgorithm = ls.linearSearch(struct.sortedStruct, target);
+        target = input.getInput("Enter the target element: ");
 
-            comparisonResult(firstAlgorithm, secondAlgorithm);
-        }
+        System.out.println("Algorithm 1: " + firstAlgorithmName);
+        firstAlgorithm = switch (firstChoice) {
+            case 1 -> ls.linearSearch(struct.sortedStruct, target);
+            case 2 -> bs.binarySearch(struct.sortedStruct, target);
+            case 3 -> js.jumpSearch(struct.sortedStruct, target);
+            default -> throw new IllegalStateException("Unexpected value: " + firstChoice);
+        };
+
+        System.out.println("Algorithm 2: " + secondAlgorithmName);
+        secondAlgorithm = switch (secondChoice) {
+            case 1 -> ls.linearSearch(struct.sortedStruct, target);
+            case 2 -> bs.binarySearch(struct.sortedStruct, target);
+            case 3 -> js.jumpSearch(struct.sortedStruct, target);
+            default -> throw new IllegalStateException("Unexpected value: " + firstChoice);
+        };
     }
 }
