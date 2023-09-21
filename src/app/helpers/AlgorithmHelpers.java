@@ -28,6 +28,8 @@ public class AlgorithmHelpers {
     struct = new Structure();
   
   
+  
+  
   }
 
   public void performSearching(int choice) {
@@ -46,19 +48,12 @@ public class AlgorithmHelpers {
     System.out.print("Enter the target element: ");
 
     int target = sc.nextInt();
-
-    if (choice == 1) {
-      ls.linearSearch(struct.sortedStruct, target);
-    } else {
-      bs.binarySearch(struct.sortedStruct, target);
-    }
-
+ 
      switch (choice) {
           case 1 -> ls.linearSearch(struct.sortedStruct, target);
           case 2 -> bs.binarySearch(struct.sortedStruct, target);
           case 3 -> js.jumpSearch(struct.sortedStruct, target);
-          default -> throw new IllegalStateException("Unexpected value: " + firstChoice);
- 
+          default -> throw new IllegalStateException("Unexpected value: " + firstChoice); 
   }
 
   public void performSorting(int choice) {
