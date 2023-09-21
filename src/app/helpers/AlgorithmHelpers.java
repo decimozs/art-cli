@@ -16,10 +16,10 @@ public class AlgorithmHelpers {
   private final Scanner sc;
   private final Structure struct;
   private final JumpSearch js;
-  private final ComparisonHelpers chlp;
+  private final InputHelpers input;
 
   public AlgorithmHelpers() {
-    chlp = new ComparisonHelpers();
+    input = new InputHelpers();
     js = new JumpSearch();
     ls = new LinearSearch();
     bs = new BinarySearch();
@@ -29,29 +29,29 @@ public class AlgorithmHelpers {
   }
 
   public void performSearching(int choice) {
-    String algorithmName = "";
-    algorithmName =
-        switch (choice) {
-          case 1 -> "Linear Search";
-          case 2 -> "Binary Search";
-          case 3 -> "Jump Search";
-          case 4 -> "Interpolation Search";
-          default -> "Exponential Search";
-        };
-    System.out.println(algorithmName);
-    System.out.print("Structure: ");
-    struct.searchingStructure();
-    System.out.print("Enter the target element: ");
+      String algorithmName = "";
+      algorithmName =
+              switch (choice) {
+                  case 1 -> "Linear Search";
+                  case 2 -> "Binary Search";
+                  case 3 -> "Jump Search";
+                  case 4 -> "Interpolation Search";
+                  default -> "Exponential Search";
+              };
 
-    int target = sc.nextInt();
- 
-     switch (choice) {
+      System.out.println(algorithmName);
+      System.out.print("Structure: ");
+      struct.searchingStructure();
+      int target = input.getInput("Enter the target element: ");
+
+      switch (choice) {
           case 1 -> ls.linearSearch(struct.sortedStruct, target);
           case 2 -> bs.binarySearch(struct.sortedStruct, target);
           case 3 -> js.jumpSearch(struct.sortedStruct, target);
-          default -> throw new IllegalStateException("Unexpected value: " + firstChoice); 
+          default -> throw new IllegalStateException("Unexpected value: " + choice);
+      }
   }
-
+  
   public void performSorting(int choice) {
     System.out.println((choice == 1) ? "Bubble Sort" : "Selection Sort");
     System.out.print("Unsorted Array: ");
