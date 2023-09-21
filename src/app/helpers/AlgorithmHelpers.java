@@ -25,11 +25,7 @@ public class AlgorithmHelpers {
     bs = new BinarySearch();
     bsort = new BubbleSort();
     sc = new Scanner(System.in);
-    struct = new Structure();
-  
-  
-  
-  
+    struct = new Structure();  
   }
 
   public void performSearching(int choice) {
