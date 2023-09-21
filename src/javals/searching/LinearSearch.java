@@ -9,7 +9,7 @@ public class LinearSearch {
     public LinearSearch() {
         run = new RuntimeTester();
     }
-    public long linearSearch(int[] arr, int target) {
+    public double linearSearch(int[] arr, int target) {
         System.out.println("Linear Search");
         Runnable search =
                 () -> {

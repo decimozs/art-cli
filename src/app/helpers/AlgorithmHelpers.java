@@ -3,6 +3,7 @@ package app.helpers;
 import app.base.*;
 import java.util.Scanner;
 import javals.searching.BinarySearch;
+import javals.searching.JumpSearch;
 import javals.searching.LinearSearch;
 import javals.sorting.BubbleSort;
 
@@ -14,8 +15,10 @@ public class AlgorithmHelpers {
   private final BubbleSort bsort;
   private final Scanner sc;
   private final Structure struct;
+  private final JumpSearch js;
 
   public AlgorithmHelpers() {
+    js = new JumpSearch();
     ls = new LinearSearch();
     bs = new BinarySearch();
     bsort = new BubbleSort();

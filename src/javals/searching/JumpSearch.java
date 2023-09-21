@@ -9,7 +9,7 @@ public class JumpSearch {
         run = new RuntimeTester();
     }
 
-    public long jumpSearch(int[] arr, int target) {
+    public double jumpSearch(int[] arr, int target) {
         System.out.println("Jump Search");
         Runnable search =
                 () -> {

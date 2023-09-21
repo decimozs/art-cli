@@ -82,15 +82,32 @@ public class ComparisonHelpers {
     System.out.println("Invalid Choice!");
   }
 
-  private void comparisonResult(long firstAlgorithm, long secondAlgorithm, String firstAlgorithmName, String secondAlgorithmName) {
-    if (firstAlgorithm > secondAlgorithm) {
-      System.out.println(firstAlgorithmName + " has a faster way to found the target element.");
-    } else {
-      System.out.println(secondAlgorithmName + " has a faster way to found the target element.");
-    }
-  }
+    // error
+    // this will be fix to be more accurate result.
+    private void comparisonResult(long firstAlgorithmTime, long secondAlgorithmTime, String firstAlgorithmName, String secondAlgorithmName) {
+        long thresholdMillis = 1;
 
-  private void printSearchingAlgorithmChoice(int choice) {
+        double firstAlgorithmMillis = (double) firstAlgorithmTime ;
+        double secondAlgorithmMillis = (double) secondAlgorithmTime ;
+
+        if (firstAlgorithmMillis < secondAlgorithmMillis - thresholdMillis) {
+            System.out.println(firstAlgorithmName + " is faster than " + secondAlgorithmName + " by at least " + (secondAlgorithmMillis - firstAlgorithmMillis) + " nanoseconds.");
+        } else if (secondAlgorithmMillis < firstAlgorithmMillis - thresholdMillis) {
+            System.out.println(secondAlgorithmName + " is faster than " + firstAlgorithmName + " by at least " + (secondAlgorithmMillis - firstAlgorithmMillis) + " nanoseconds.");
+        } else {
+            if (firstAlgorithmTime < secondAlgorithmTime) {
+                System.out.println(firstAlgorithmName + " is faster than " + secondAlgorithmName + " by " + (secondAlgorithmMillis - firstAlgorithmMillis) + " nanoseconds.");
+            } else if (secondAlgorithmTime < firstAlgorithmTime) {
+                System.out.println(secondAlgorithmName + " is faster than " + firstAlgorithmName + " by " + (firstAlgorithmMillis - secondAlgorithmMillis) + " nanoseconds.");
+            } else {
+                System.out.println(firstAlgorithmName + " and " + secondAlgorithmName + " have the same execution time.");
+            }
+        }
+    }
+
+
+
+    private void printSearchingAlgorithmChoice(int choice) {
     String algorithmName = "";
     algorithmName =
         switch (choice) {
@@ -117,8 +134,8 @@ public class ComparisonHelpers {
 
   private void comparisonOverview(int firstChoice, int secondChoice) {
     int target = 0;
-    long firstAlgorithm;
-    long secondAlgorithm;
+    double firstAlgorithm;
+    double secondAlgorithm;
     String firstAlgorithmName = "";
     String secondAlgorithmName = "";
 

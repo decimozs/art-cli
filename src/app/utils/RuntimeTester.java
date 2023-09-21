@@ -1,7 +1,7 @@
 package app.utils;
 
 public class RuntimeTester {
-    public long algorithmTakes;
+    public double algorithmTakes;
     public void test(Runnable algorithm, String algorithmName) {
         long startTime = System.nanoTime();
         algorithm.run();
