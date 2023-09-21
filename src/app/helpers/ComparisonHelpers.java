@@ -82,32 +82,59 @@ public class ComparisonHelpers {
     System.out.println("Invalid Choice!");
   }
 
-    // error
-    // this will be fix to be more accurate result.
-    private void comparisonResult(long firstAlgorithmTime, long secondAlgorithmTime, String firstAlgorithmName, String secondAlgorithmName) {
-        long thresholdMillis = 1;
+  // error
+  // this will be fix to be more accurate result.
+  private void comparisonResult(
+      long firstAlgorithmTime,
+      long secondAlgorithmTime,
+      String firstAlgorithmName,
+      String secondAlgorithmName) {
+    long thresholdMillis = 1;
 
-        double firstAlgorithmMillis = (double) firstAlgorithmTime ;
-        double secondAlgorithmMillis = (double) secondAlgorithmTime ;
+    double firstAlgorithmMillis = (double) firstAlgorithmTime;
+    double secondAlgorithmMillis = (double) secondAlgorithmTime;
 
-        if (firstAlgorithmMillis < secondAlgorithmMillis - thresholdMillis) {
-            System.out.println(firstAlgorithmName + " is faster than " + secondAlgorithmName + " by at least " + (secondAlgorithmMillis - firstAlgorithmMillis) + " nanoseconds.");
-        } else if (secondAlgorithmMillis < firstAlgorithmMillis - thresholdMillis) {
-            System.out.println(secondAlgorithmName + " is faster than " + firstAlgorithmName + " by at least " + (secondAlgorithmMillis - firstAlgorithmMillis) + " nanoseconds.");
-        } else {
-            if (firstAlgorithmTime < secondAlgorithmTime) {
-                System.out.println(firstAlgorithmName + " is faster than " + secondAlgorithmName + " by " + (secondAlgorithmMillis - firstAlgorithmMillis) + " nanoseconds.");
-            } else if (secondAlgorithmTime < firstAlgorithmTime) {
-                System.out.println(secondAlgorithmName + " is faster than " + firstAlgorithmName + " by " + (firstAlgorithmMillis - secondAlgorithmMillis) + " nanoseconds.");
-            } else {
-                System.out.println(firstAlgorithmName + " and " + secondAlgorithmName + " have the same execution time.");
-            }
-        }
+    if (firstAlgorithmMillis < secondAlgorithmMillis - thresholdMillis) {
+      System.out.println(
+          firstAlgorithmName
+              + " is faster than "
+              + secondAlgorithmName
+              + " by at least "
+              + (secondAlgorithmMillis - firstAlgorithmMillis)
+              + " nanoseconds.");
+    } else if (secondAlgorithmMillis < firstAlgorithmMillis - thresholdMillis) {
+      System.out.println(
+          secondAlgorithmName
+              + " is faster than "
+              + firstAlgorithmName
+              + " by at least "
+              + (secondAlgorithmMillis - firstAlgorithmMillis)
+              + " nanoseconds.");
+    } else {
+      if (firstAlgorithmTime < secondAlgorithmTime) {
+        System.out.println(
+            firstAlgorithmName
+                + " is faster than "
+                + secondAlgorithmName
+                + " by "
+                + (secondAlgorithmMillis - firstAlgorithmMillis)
+                + " nanoseconds.");
+      } else if (secondAlgorithmTime < firstAlgorithmTime) {
+        System.out.println(
+            secondAlgorithmName
+                + " is faster than "
+                + firstAlgorithmName
+                + " by "
+                + (firstAlgorithmMillis - secondAlgorithmMillis)
+                + " nanoseconds.");
+      } else {
+        System.out.println(
+            firstAlgorithmName + " and " + secondAlgorithmName + " have the same execution time.");
+      }
     }
+  }
 
-
-
-    private void printSearchingAlgorithmChoice(int choice) {
+  public void printSearchingAlgorithmChoice(int choice) {
     String algorithmName = "";
     algorithmName =
         switch (choice) {
